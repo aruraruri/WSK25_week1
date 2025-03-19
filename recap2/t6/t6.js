@@ -1,5 +1,8 @@
 "use strict";
 
+const moviesUl = document.querySelector("#movies");
+const highestRatedMovieP = document.querySelector("#highest");
+
 function Movie(title, rating) {
   this.title = title;
   this.rating = rating;
@@ -18,6 +21,9 @@ while (true) {
   }
 
   movies.push(new Movie(movieTitle, movieRating));
+  let list = document.createElement("li");
+  list.textContent = `${movieTitle}, rating: ${movieRating} stars.`;
+  moviesUl.appendChild(list);
 }
 
 console.log(movies);
@@ -34,4 +40,5 @@ let highestRatedMovie = movies.reduce(
   { rating: -Infinity }
 );
 
+highestRatedMovieP.textContent = `The highest rated movie is: ${highestRatedMovie.title}, with a rating of ${highestRatedMovie.rating} stars.`;
 console.log(highestRatedMovie);
